@@ -1,0 +1,14 @@
+[tool.black]
+line-length = 100
+target-version = ['py36', 'py37', 'py38']
+include = '\.pyi?$'
+skip-string-normalization = true
+extend-exclude = '^/(deploy|docs)'
+
+[tool.isort]
+profile = "black"
+line_length = 100
+default_section = "THIRDPARTY"
+ensure_newline_before_comments = true
+no_lines_before = ["STDLIB",]
+lines_between_types = 1
