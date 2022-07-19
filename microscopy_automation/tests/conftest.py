@@ -16,20 +16,20 @@ def raw_image(artifacts_dirpath):
     '''
     An example of a real raw image acquired by the microscope with proper exposure settings
     '''
-    return imageio.imread(artifacts_dirpath / 'raw-image-properly-exposed.tif')
+    return imageio.imread(artifacts_dirpath / 'data' / 'raw-image-properly-exposed.tif')
 
 
 @pytest.fixture
-def get_microscope_interface(raw_image):
+def create_microscope_interface(raw_image):
     '''
     Factory fixture that returns a mocked microscope interface
     instantiated with the raw_image (as a numpy array)
     '''
 
-    def _get_microscope_interface(*args, **kwargs):
+    def _create_microscope_interface(*args, **kwargs):
         return mocks.MockedMicroscopeInterface(raw_image, *args, **kwargs)
 
-    return _get_microscope_interface
+    return _create_microscope_interface
 
 
 @pytest.fixture
